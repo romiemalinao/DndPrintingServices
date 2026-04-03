@@ -76,7 +76,7 @@ export const Navbar = () => {
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className="text-gray-900 p-2 focus:outline-none"
+              className="text-gray-900 p-2 focus:outline-none relative z-[60]"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
@@ -89,27 +89,29 @@ export const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 top-[72px] bg-white z-50 md:hidden overflow-y-auto"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-white z-[55] md:hidden overflow-y-auto"
           >
-            <div className="flex flex-col p-6 space-y-4">
+            <div className="flex flex-col p-8 pt-24 space-y-6">
               {navLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => scrollToSection(link.path)}
-                  className="text-left px-4 py-4 text-2xl font-bold text-gray-900 border-b border-gray-50 hover:text-blue-600 transition-colors"
+                  className="text-left px-4 py-4 text-3xl font-black text-gray-900 border-b border-gray-100 hover:text-blue-600 transition-colors"
                 >
                   {link.name}
                 </button>
               ))}
-              <div className="pt-6">
+              <div className="pt-8">
                 <a
                   href="https://www.facebook.com/profile.php?id=61580757008333"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full text-center bg-blue-600 text-white px-5 py-5 rounded-2xl text-xl font-bold shadow-xl shadow-blue-100"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center bg-blue-600 text-white px-5 py-6 rounded-2xl text-2xl font-bold shadow-2xl shadow-blue-200"
                 >
                   Order Now
                 </a>
@@ -162,7 +164,7 @@ export const Footer = () => {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-blue-400 shrink-0" />
-                <span>0912-345-6789</span>
+                <span>0915-826-9806</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-5 h-5 text-blue-400 shrink-0">@</div>
