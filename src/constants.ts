@@ -7,7 +7,7 @@ export const SERVICES = [
     description: 'Mataas na kalidad na prints para sa iyong mga alaala. Perfect para sa souvenirs, graduation, at special events.',
     benefits: ['High-resolution prints', 'Water-resistant ink', 'Various sizes available'],
     icon: ImageIcon,
-    price: 'Mula ₱25.00'
+    price: 'Mula ₱5.00'
   },
   {
     id: 'lamination',
@@ -15,7 +15,7 @@ export const SERVICES = [
     description: 'Protektahan ang iyong mahahalagang dokumento, ID, at certificates mula sa dumi at pagkasira.',
     benefits: ['Durable protection', 'Clear finish', 'ID to A4 sizes'],
     icon: ShieldCheck,
-    price: 'Mula ₱10.00'
+    price: 'Mula ₱15.00'
   },
   {
     id: 'photocopy',
@@ -23,7 +23,7 @@ export const SERVICES = [
     description: 'Mabilis at malinaw na kopya ng iyong mga dokumento. Available sa Black & White at Colored.',
     benefits: ['Fast processing', 'Clear text and images', 'Bulk discounts'],
     icon: Copy,
-    price: 'Mula ₱3.00'
+    price: 'Mula ₱2.00'
   },
   {
     id: 'document-printing',

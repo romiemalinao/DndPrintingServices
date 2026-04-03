@@ -67,22 +67,22 @@ export const Home = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center space-x-3 border border-gray-50">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                  <Shield className="text-green-600 w-6 h-6" />
+              <div className="absolute -top-4 -right-2 md:-top-6 md:-right-6 bg-white p-3 md:p-4 rounded-2xl shadow-xl z-20 flex items-center space-x-2 md:space-x-3 border border-gray-50 max-w-[80%]">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
+                  <Shield className="text-green-600 w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">Quality Guaranteed</div>
-                  <div className="text-xs text-gray-500">Premium Ink & Paper</div>
+                  <div className="font-bold text-gray-900 text-sm md:text-base">Quality Guaranteed</div>
+                  <div className="text-[10px] md:text-xs text-gray-500">Premium Ink & Paper</div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center space-x-3 border border-gray-50">
-                <div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-                  <Clock className="text-yellow-600 w-6 h-6" />
+              <div className="absolute -bottom-4 -left-2 md:-bottom-6 md:-left-6 bg-white p-3 md:p-4 rounded-2xl shadow-xl z-20 flex items-center space-x-2 md:space-x-3 border border-gray-50 max-w-[80%]">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-100 rounded-xl flex items-center justify-center shrink-0">
+                  <Clock className="text-yellow-600 w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">Fast Turnaround</div>
-                  <div className="text-xs text-gray-500">While you wait</div>
+                  <div className="font-bold text-gray-900 text-sm md:text-base">Fast Turnaround</div>
+                  <div className="text-[10px] md:text-xs text-gray-500">While you wait</div>
                 </div>
               </div>
             </motion.div>

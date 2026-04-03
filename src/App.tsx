@@ -24,7 +24,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={
-          <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-blue-100 selection:text-blue-900">
+          <div className="min-h-screen w-full overflow-x-hidden bg-white font-sans text-gray-900 selection:bg-blue-100 selection:text-blue-900">
             <Navbar />
             <main><Home /></main>
             <Footer />
@@ -32,7 +32,7 @@ export default function App() {
           </div>
         } />
         <Route path="*" element={
-          <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-blue-100 selection:text-blue-900">
+          <div className="min-h-screen w-full overflow-x-hidden bg-white font-sans text-gray-900 selection:bg-blue-100 selection:text-blue-900">
             <Navbar />
             <main><Home /></main>
             <Footer />
