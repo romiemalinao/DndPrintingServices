@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Printer, Phone } from 'lucide-react';
+import { Menu, X, Printer, Phone, Facebook, Instagram } from 'lucide-react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,12 +122,12 @@ export const Footer = () => {
               Ang inyong katuwang sa lahat ng printing needs. Mabilis, malinaw, at abot-kayang serbisyo para sa bawat Pilipino.
             </p>
             <div className="flex space-x-4">
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                <span className="font-bold">f</span>
-              </div>
-              <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                <span className="font-bold">i</span>
-              </div>
+              <a href="https://www.facebook.com/profile.php?id=61580757008333" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors cursor-pointer">
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
           
