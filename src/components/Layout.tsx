@@ -145,7 +145,7 @@ export const Footer = () => {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-blue-400 shrink-0" />
-                <span>0912-345-6789</span>
+                <span>0915-826-9806</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-5 h-5 text-blue-400 shrink-0">@</div>
