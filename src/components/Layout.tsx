@@ -15,21 +15,36 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/#home' },
-    { name: 'Services', path: '/#services' },
-    { name: 'Portfolio', path: '/#portfolio' },
-    { name: 'Order Now', path: '/#order' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'Home', path: 'home' },
+    { name: 'Services', path: 'services' },
+    { name: 'Portfolio', path: 'portfolio' },
+    { name: 'Order Now', path: 'order' },
+    { name: 'Contact', path: 'contact' },
   ];
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      setIsOpen(false);
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-yellow-50/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-3 group">
             <img src="/logo.jpg" alt="DnD Logo" className="w-14 h-14 object-contain" />
             <div className="flex flex-col">
-              <span className={`text-xl font-black tracking-tighter leading-none ${scrolled ? 'text-gray-900' : 'text-gray-900'}`}>
+              <span className="text-xl font-black tracking-tighter leading-none text-gray-900">
                 DnD <span className="text-blue-600">PRINTING</span>
               </span>
               <span className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Services</span>
@@ -39,13 +54,13 @@ export const Navbar = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.path}
-                to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${location.pathname === link.path ? 'text-blue-600' : 'text-gray-600'}`}
+                onClick={() => scrollToSection(link.path)}
+                className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600 cursor-pointer"
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
             <a
               href="https://www.facebook.com/profile.php?id=61580757008333"
@@ -59,8 +74,12 @@ export const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 p-2">
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="text-gray-900 p-2 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
             </button>
           </div>
         </div>
@@ -70,29 +89,27 @@ export const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 top-[72px] bg-white z-50 md:hidden overflow-y-auto"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
+            <div className="flex flex-col p-6 space-y-4">
               {navLinks.map((link) => (
-                <Link
+                <button
                   key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-4 text-base font-medium rounded-md ${location.pathname === link.path ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-50'}`}
+                  onClick={() => scrollToSection(link.path)}
+                  className="text-left px-4 py-4 text-2xl font-bold text-gray-900 border-b border-gray-50 hover:text-blue-600 transition-colors"
                 >
                   {link.name}
-                </Link>
+                </button>
               ))}
-              <div className="pt-4 px-3">
+              <div className="pt-6">
                 <a
                   href="https://www.facebook.com/profile.php?id=61580757008333"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-blue-600 text-white px-5 py-3 rounded-xl text-base font-semibold shadow-lg"
+                  className="block w-full text-center bg-blue-600 text-white px-5 py-5 rounded-2xl text-xl font-bold shadow-xl shadow-blue-100"
                 >
                   Order Now
                 </a>
@@ -145,7 +162,7 @@ export const Footer = () => {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-blue-400 shrink-0" />
-                <span>0915-826-9806</span>
+                <span>0912-345-6789</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-5 h-5 text-blue-400 shrink-0">@</div>
