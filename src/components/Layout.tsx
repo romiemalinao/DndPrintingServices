@@ -38,62 +38,63 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-3 group">
-            <img src="/logo.jpg" alt="DnD Logo" className="w-14 h-14 object-contain" />
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tighter leading-none text-gray-900">
-                DnD <span className="text-blue-600">PRINTING</span>
-              </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Services</span>
-            </div>
-          </Link>
+    <>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-4'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-3 group">
+              <img src="/logo.jpg" alt="DnD Logo" className="w-14 h-14 object-contain" />
+              <div className="flex flex-col">
+                <span className="text-xl font-black tracking-tighter leading-none text-gray-900">
+                  DnD <span className="text-blue-600">PRINTING</span>
+                </span>
+                <span className="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Services</span>
+              </div>
+            </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.path}
-                onClick={() => scrollToSection(link.path)}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600 cursor-pointer"
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => scrollToSection(link.path)}
+                  className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600 cursor-pointer"
+                >
+                  {link.name}
+                </button>
+              ))}
+              <a
+                href="https://www.facebook.com/profile.php?id=61580757008333"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
               >
-                {link.name}
-              </button>
-            ))}
-            <a
-              href="https://www.facebook.com/profile.php?id=61580757008333"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
-            >
-              Order Now
-            </a>
-          </div>
+                Order Now
+              </a>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className="text-gray-900 p-2 focus:outline-none relative z-[60]"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-            </button>
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                className="text-gray-900 p-2 focus:outline-none relative z-[110]"
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-white z-[55] md:hidden overflow-y-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 bg-white z-[100] md:hidden overflow-y-auto"
           >
             <div className="flex flex-col p-8 pt-24 space-y-6">
               {navLinks.map((link) => (
@@ -120,7 +121,7 @@ export const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 
